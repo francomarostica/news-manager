@@ -7,7 +7,6 @@
                 
             </div>
         </section>
-        
         <section>
             <div class="row">
                 @foreach ($articles as $article)
@@ -20,5 +19,4 @@
             </div>
         </section>
     </div>
-    
 @endsection
