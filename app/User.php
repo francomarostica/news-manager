@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -36,4 +35,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function __construct($name="", $email="", $password=""){
+        $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
+    }
+    
+    public function roles(){
+        return $this->belongsToMany('\App\Role');
+    }
 }
