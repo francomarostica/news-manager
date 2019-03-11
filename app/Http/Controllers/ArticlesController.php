@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class ArticlesController extends Controller
 {
@@ -45,8 +46,9 @@ class ArticlesController extends Controller
      */
     public function show($slug)
     {
-        //return $slug;
-        //return view('article', compact());
+        $currentCategory="";
+        $categories = Category::all();
+        return view('article', compact(['slug', 'categories', 'currentCategory']));
     }
 
     /**
