@@ -54,8 +54,8 @@
                             <button type="submit" class="btn btn-primary btn-block">
                                 {{ __('auth.login_button') }}
                             </button>
-                            <a href='{{ route('') }}' class="btn btn-primary btn-block">
-                                {{ __('auth.login_button') }}
+                            <a href='{{ route('register') }}' class="btn btn-success btn-block">
+                                {{ __('auth.register') }}
                             </a>
                         </div>
                     </form>
