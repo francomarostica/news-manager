@@ -30,6 +30,14 @@ body{
     font-size: 0.8rem;
     text-transform: uppercase;
 }
+.articlebox .category>a
+{
+    color: rgb(65, 117, 196);
+}
+.articlebox .category>a:hover
+{
+    text-decoration: none;
+}
 .articlebox .title
 {
     font-size: 1.1rem;
@@ -46,6 +54,10 @@ body{
 .articlebox.primary
 {
     height: 550px;
+}
+.articlebox.primary .category>a
+{
+    color: white;
 }
 .articlebox.primary .image{
     border-radius: 0px;

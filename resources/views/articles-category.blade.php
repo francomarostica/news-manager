@@ -12,7 +12,9 @@
             <div class="row">
                 @foreach ($articles as $article)
                     <div class="col-md-3">
-                        @include('common.articlebox-small')
+                        <div class="articlebox small">
+                            @include('common.articlebox-grid')
+                        </div>
                     </div>
                 @endforeach
             </div>

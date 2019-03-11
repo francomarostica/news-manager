@@ -7,13 +7,19 @@
                 @foreach ($primaryArticles as $article)
                     @if($loop->iteration==1)
                         <div class="col-md-4">
-                            @include('common.articlebox-primary')
+                            <div class="articlebox primary">
+                                @include('common.articlebox-grid')
+                            </div>
                         </div>
                     @elseif($loop->iteration==2)
                         <div class="col-md-4">
-                            @include('common.articlebox')
+                            <div class="articlebox">
+                                @include('common.articlebox-grid')
+                            </div>
                     @elseif($loop->iteration==3)
-                        @include('common.articlebox')
+                        <div class="articlebox">
+                            @include('common.articlebox-grid')
+                        </div>
                         </div> <!-- end col-md-4 -->
                         <div class="col-md-4">
                             <div class="img-ad-v-container">
@@ -29,7 +35,9 @@
             <div class="row">
                 @foreach ($outstandingArticles as $article)
                     <div class="col-md-3">
-                        @include('common.articlebox-small')
+                        <div class="articlebox small">
+                            @include('common.articlebox-grid')
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -46,17 +54,23 @@
                     @switch($loop->iteration)
                         @case(1)
                             <div class="col-md-6">
-                                @include('common.articlebox-medium')
+                                <div class="articlebox medium">
+                                    @include('common.articlebox-grid')
+                                </div>
                             </div>
                             @break
                         @case(2)
                             <div class="col-md-3">
-                                @include('common.articlebox-small')
+                                <div class="articlebox small">
+                                    @include('common.articlebox-grid')
+                                </div>
                             </div>
                             @break
                         @case(3)
                             <div class="col-md-3">
-                                @include('common.articlebox-small')
+                                <div class="articlebox small">
+                                    @include('common.articlebox-grid')
+                                </div>
                             </div>
                             @break    
                     @endswitch
