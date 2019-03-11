@@ -13,7 +13,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        //return view('article');
     }
 
     /**
@@ -43,9 +43,10 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        //return $slug;
+        //return view('article', compact());
     }
 
     /**

@@ -24,9 +24,9 @@ class CategorySeeder extends Seeder
 
         DB::table('categories')->insert([
             'id' => 2,
-            'title' => 'Economía',
+            'title' => 'Negocios',
             'image' => '',
-            'url' => 'economia'
+            'url' => 'negocios'
         ]);
 
         DB::table('categories')->insert([

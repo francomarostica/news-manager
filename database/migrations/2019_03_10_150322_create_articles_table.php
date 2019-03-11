@@ -15,10 +15,13 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->dateTime('publish_date');
             $table->string('title');
-            $table->string('image');
+            $table->string('image')->default('logo-example.jpg');
             $table->string('category_id');
+            $table->string('topics')->default('');
             $table->unsignedInteger('author_id')->default(0);
+            $table->unsignedTinyInteger('outstanding_weight')->default(0);
             $table->boolean('published')->default(1);
             $table->timestamps();
         });

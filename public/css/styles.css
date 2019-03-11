@@ -19,6 +19,12 @@ body{
     text-align: center;
 }
 
+.articlebox:hover .image
+{
+    -webkit-filter: brightness(.5);
+    filter: brightness(.5);
+}
+
 .articlebox .category
 {
     font-size: 0.8rem;
@@ -34,6 +40,7 @@ body{
     object-fit: cover;
     object-position: center;
     border-radius: 6px;
+    transition: filter 0.5s;
 }
 
 .articlebox.primary
@@ -45,7 +52,16 @@ body{
     height: 100%;
 }
 
-.articlebox.primary .titlebox
+.articlebox.medium
+{
+    height: 275px;
+}
+.articlebox.medium .image{
+    border-radius: 0px;
+    height: 100%;
+}
+
+.articlebox.primary .titlebox, .articlebox.medium .titlebox
 {
     text-shadow: 2px 2px black;
     position: absolute;
@@ -66,7 +82,7 @@ body{
 .articlebox.small .image
 {
     border-radius: 0px;
-    height: 130px;
+    height: 160px;
 }
 
 .category-mnu-item
@@ -103,6 +119,10 @@ header{
     height: 100%;
     max-height: 550px;
     object-fit: contain;
+}
+
+.logo{
+    height: 60px;
 }
 
 section{

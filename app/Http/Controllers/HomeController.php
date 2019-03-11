@@ -3,24 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
 use App\Article;
+use App\Category;
 
 class HomeController extends Controller
 {
     /**
-     * Returns the main view for NewsManager site
+     * Show the application dashboard.
      *
-     * @param string $currentCategory
-     * @return View
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index($currentCategory="")
-    {
+    {   
         $categories = Category::all();
-        $articles = Article::where('published', 1)
-            ->orderBy('id', 'desc')
-            ->take(7)
-            ->get();
-        return view('index', compact(['categories', 'articles', 'currentCategory']));
+
+        $primaryArticles = Article::where([
+            ['published','=', 1], 
+            ['category_id', '<>', 'negocios'], 
+            ['outstanding_weight', '=', 1]
+        ])
+        ->orderBy('publish_date', 'desc')
+        ->take(3)
+        ->get();
+
+        $outstandingArticles = Article::where([
+            ['published','=',1],
+            ['outstanding_weight','>',1],
+            ['category_id', '<>', 'negocios']
+        ])
+        ->take(4)
+        ->get();
+
+        $businessArticles = Article::where(['published'=>1, 'category_id'=>'negocios'])
+        ->take(3)
+        ->get();
+
+        return view('index', compact(['primaryArticles', 'outstandingArticles', 'businessArticles', 'categories', 'currentCategory']));
     }
 }
