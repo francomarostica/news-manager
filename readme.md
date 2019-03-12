@@ -8,24 +8,24 @@ You can access to the demo at http://newsmanager.cloure.com
 
 Also can access with distinct roles in the pdc
 <b>User credentials</b>
-Username: user@example.com
-Password: test123456
+<br/>Username: user@example.com
+<br/>Password: test123456
 
 <b>Admin credentials</b>
-Username: admin@example.com
-Password: test123456
+<br/>Username: admin@example.com
+<br/>Password: test123456
 
-## Feautures
+## Features
 
 - Listing articles with categories
 - User autentication (in development)
 
 ## changelog
 
-<h3>2019-03-11</h3>
+# 2019-03-11
 - Added role based functions
 
-<h3>2019-03-12</h3>
+# 2019-03-12
 - Created CRUD modules for the control panel
 - Deployed in a production server at http://newsmanager.cloure.com
 
