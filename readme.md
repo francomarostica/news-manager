@@ -9,7 +9,7 @@ News manager is an app in development created by Franco Marostica writted in PHP
 
 ## changelog
 
-<h3>2019-03-10</h3>
+<h3>2019-03-11</h3>
 - Added role based functions
 
 ## Task to do
