@@ -23,7 +23,24 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/panel/profile">{{ __('mi_profile.title') }}</a>
+                            </li>
+                            @if($request->user()->hasRole('admin') || $request->user()->hasRole('editor'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/panel/articles">{{ __('articles.title') }}</a>
+                                </li>
+                            @endif
+                            @if($request->user()->hasRole('admin') || $request->user()->hasRole('editor'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/panel/categories">{{ __('categories.title') }}</a>
+                                </li>
+                            @endif
+                            @if($request->user()->hasRole('admin'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/panel/users">{{ __('users.title') }}</a>
+                                </li>
+                            @endif
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -59,6 +76,8 @@
                 </div>
             </nav>
         </header>
-        @yield('content')
+        <div class="container">
+            @yield('content')
+        </div>
     </body>
 </html>

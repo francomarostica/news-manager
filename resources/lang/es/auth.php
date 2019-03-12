@@ -12,5 +12,6 @@ return [
     'login_button' => 'Ingresar',
     'forgot_password' => '¿Olvido su clave?',
     'name_prompt' => 'Nombre',
-    'logout' => 'Cerrar sesión'
+    'logout' => 'Cerrar sesión',
+    'dashboard' => 'Panel',
 ];

@@ -2,6 +2,10 @@
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/panel', 'PanelController@index')->name('panel');
+Route::resource('/panel/articles', 'ArticlesController');
+Route::resource('/panel/profile', 'ProfileController');
+Route::resource('/panel/categories', 'CategoriesController');
+Route::resource('/panel/users', 'UserController');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

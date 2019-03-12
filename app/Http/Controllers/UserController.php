@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Category;
 
-class ArticlesController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class ArticlesController extends Controller
         if(!Auth::check()){
             return redirect("/login");
         } else {
-            $request->user()->authorizeRoles(['admin', 'editor']);
-            return view('panel.articles', compact('request'));
+            $request->user()->authorizeRoles('admin');
+            return view('panel.users', compact('request'));
         }
     }
 
@@ -50,11 +49,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $currentCategory="";
-        $categories = Category::all();
-        return view('article', compact(['slug', 'categories', 'currentCategory']));
+        //
     }
 
     /**
