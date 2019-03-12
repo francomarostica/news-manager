@@ -14,12 +14,5 @@ News manager is an app in development created by Franco Marostica writted in PHP
 
 ## Task to do
 
-- Add CRUD for Articles on PDC
-- Add CRUD for Categories on PDC
-- Add CRUD for Users on PDC
+- Add functionallity for CRUD pages (Rest) for PDC
 - Login with social networks
-<<<<<<< HEAD
-- Add CRUD for Ads
-=======
-- Add CRUD for Ads
->>>>>>> dbefab0c6d9b588e21c5349ee4c820b02ac2d6aa
