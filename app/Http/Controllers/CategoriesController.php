@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Category;
+use App\Helper;
 
 class CategoriesController extends Controller
 {
@@ -43,7 +44,29 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = null;
+        $category = new Category();
+
+        //check if request has image
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $category->image = $file->getClientOriginalName();
+        } else {
+            $category->image="";
+        }
+
+        //set article title
+        $category->title = $request->input('title');
+        $category->url = Helper::getFriendlyURL($category->title);
+
+        //save article
+        $category->save();
+        
+        //move article image file (if exists) to assets folder with the article id
+        if($file!=null) $file->move(public_path().'/images/categories/'.$category->id.'/', $file->getClientOriginalName());
+        
+        //return the request
+        return redirect('/panel/categories');
     }
 
     /**

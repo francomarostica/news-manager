@@ -1,7 +1,8 @@
 @extends('layouts.panel')
 @section('content')
     <h1>{{ __('users.add_title') }}</h1>
-    <form action="/">
+    <form action="/panel/users" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="row">
             <div class="col-md-3">
                 <label for="txtName">Nombre</label>
@@ -17,7 +18,7 @@
             </div>
         </div>
         <div class="text-centered py-2">
-            <button class="btn btn-primary">
+            <button type="submit" class="btn btn-primary">
                 Guardar
             </button>
         </div>

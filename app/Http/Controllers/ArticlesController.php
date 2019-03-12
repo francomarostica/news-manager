@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Article;
 use App\Category;
+use App\Helper;
 
 class ArticlesController extends Controller
 {
@@ -16,7 +18,7 @@ class ArticlesController extends Controller
      */
     public function index(Request $request)
     {
-        $articles = Article::all();
+        $articles = Article::orderBy('publish_date', 'desc')->get();
 
         if(!Auth::check()){
             return redirect("/login");
@@ -33,7 +35,8 @@ class ArticlesController extends Controller
      */
     public function create(Request $request)
     {
-        return view('panel.articles.add', compact(['request']));
+        $categories = Category::all();
+        return view('panel.articles.add', compact(['request', 'categories']));
     }
 
     /**
@@ -44,7 +47,31 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = null;
+        $article = new Article();
+
+        //defines article publish date to current date and time
+        $article->publish_date = date("Y-m-d H:i:s");
+
+        //check if request has image
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $article->image = $file->getClientOriginalName();
+        }
+
+        //set article title
+        $article->title = $request->input('title');
+        $article->category_id = $request->input('category_id');
+        $article->slug = Helper::getFriendlyURL($article->title);
+
+        //save article
+        $article->save();
+        
+        //move article image file (if exists) to assets folder with the article id
+        if($file!=null) $file->move(public_path().'/images/articles/'.$article->id.'/', $file->getClientOriginalName());
+        
+        //return the request
+        return redirect('/panel/articles');
     }
 
     /**
@@ -91,6 +118,12 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $path = public_path().'/images/articles/'.$id."/";
+        $article = Article::find($id);
+        if($article!=null){
+            $article->delete();
+            Storage::deleteDirectory('images/articles/'.$id);
+            return redirect('/panel/articles');
+        }
     }
 }
