@@ -15,21 +15,21 @@ Also can access with distinct roles in the pdc
 <br/>Username: admin@example.com
 <br/>Password: test123456
 
-## Features
+# Features
 
 - Listing articles with categories
 - User autentication (in development)
 
-## changelog
+# changelog
 
-# 2019-03-11
+## 2019-03-11
 - Added role based functions
 
-# 2019-03-12
+## 2019-03-12
 - Created CRUD modules for the control panel
 - Deployed in a production server at http://newsmanager.cloure.com
 
-## Task to do
+# Task to do
 
 - Create an RESTFul API separated from pdc
 - Login with social networks
