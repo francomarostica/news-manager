@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Helper;
 
@@ -86,9 +87,10 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        return view('panel.categories.edit', compact(['category', 'request']));
     }
 
     /**
@@ -100,7 +102,12 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->title = $request->input('title');
+        $category->url = Helper::getFriendlyURL($category->title);
+        $category->update();
+        
+        return redirect("/panel/categories");
     }
 
     /**
@@ -111,6 +118,12 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $path = public_path().'/images/categories/'.$id."/";
+        $category = Category::find($id);
+        if($category!=null){
+            $category->delete();
+            Storage::deleteDirectory('images/categories/'.$id);
+            return redirect('/panel/categories');
+        }
     }
 }

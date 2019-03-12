@@ -93,9 +93,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $categories = Category::all();
+        return view('panel.articles.edit', compact(['article', 'categories', 'request']));
     }
 
     /**
@@ -107,7 +109,13 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->title = $request->input('title');
+        $article->slug = Helper::getFriendlyURL($article->title);
+        $article->category_id = $request->input('category_id');
+        $article->update();
+        
+        return redirect("/panel/articles");
     }
 
     /**
