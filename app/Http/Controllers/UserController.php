@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\User;
 
 class UserController extends Controller
 {
@@ -14,11 +15,13 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $users = User::all();
+
         if(!Auth::check()){
             return redirect("/login");
         } else {
             $request->user()->authorizeRoles('admin');
-            return view('panel.users', compact('request'));
+            return view('panel.users', compact(['request', 'users']));
         }
     }
 

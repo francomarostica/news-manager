@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Category;
+use App\Article;
 
 class ArticlesController extends Controller
 {
@@ -15,11 +15,13 @@ class ArticlesController extends Controller
      */
     public function index(Request $request)
     {
+        $articles = Article::all();
+
         if(!Auth::check()){
             return redirect("/login");
         } else {
             $request->user()->authorizeRoles(['admin', 'editor']);
-            return view('panel.articles', compact('request'));
+            return view('panel.articles', compact(['request', 'articles']));
         }
     }
 

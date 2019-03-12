@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Category;
 
 class CategoriesController extends Controller
 {
@@ -14,11 +15,13 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
+        $categories = Category::all();
+
         if(!Auth::check()){
             return redirect("/login");
         } else {
             $request->user()->authorizeRoles(['admin', 'editor']);
-            return view('panel.categories', compact('request'));
+            return view('panel.categories', compact(['request', 'categories']));
         }
     }
 

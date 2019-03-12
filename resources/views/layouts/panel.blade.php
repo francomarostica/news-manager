@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Panel de control | NewsManager</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/pdc-styles.css') }}">
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
@@ -76,7 +76,7 @@
                 </div>
             </nav>
         </header>
-        <div class="container">
+        <div class="container py-4">
             @yield('content')
         </div>
     </body>
