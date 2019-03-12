@@ -76,6 +76,11 @@
                 </div>
             </nav>
         </header>
+        <div class="container">
+            <div class="secondary-nav">
+                @yield('commands-menu')
+            </div>
+        </div>
         <div class="container py-4">
             @yield('content')
         </div>

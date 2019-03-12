@@ -17,10 +17,8 @@
                 <input id="txtEmail" type="email" class="form-control" value="{{ Auth::user()->email }}" />
             </div>
         </div>
-        <!--
         <div class="form-group py-4 text-center">
-            <button class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
-        -->
     </form>
 @endsection

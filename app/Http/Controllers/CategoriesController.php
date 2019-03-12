@@ -21,7 +21,7 @@ class CategoriesController extends Controller
             return redirect("/login");
         } else {
             $request->user()->authorizeRoles(['admin', 'editor']);
-            return view('panel.categories', compact(['request', 'categories']));
+            return view('panel.categories.index', compact(['request', 'categories']));
         }
     }
 
@@ -30,9 +30,9 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('panel.categories.add', compact(['request']));
     }
 
     /**

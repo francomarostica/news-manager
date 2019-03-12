@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Article;
+use App\Category;
 
 class ArticlesController extends Controller
 {
@@ -21,7 +22,7 @@ class ArticlesController extends Controller
             return redirect("/login");
         } else {
             $request->user()->authorizeRoles(['admin', 'editor']);
-            return view('panel.articles', compact(['request', 'articles']));
+            return view('panel.articles.index', compact(['request', 'articles']));
         }
     }
 
@@ -30,9 +31,9 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('panel.articles.add', compact(['request']));
     }
 
     /**
@@ -52,11 +53,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
         $currentCategory="";
         $categories = Category::all();
-        return view('article', compact(['slug', 'categories', 'currentCategory']));
+        return view('panel.articles.add', compact(['slug', 'categories', 'currentCategory', 'request']));
     }
 
     /**

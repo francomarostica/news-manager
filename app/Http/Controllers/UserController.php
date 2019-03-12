@@ -21,7 +21,7 @@ class UserController extends Controller
             return redirect("/login");
         } else {
             $request->user()->authorizeRoles('admin');
-            return view('panel.users', compact(['request', 'users']));
+            return view('panel.users.index', compact(['request', 'users']));
         }
     }
 
@@ -30,9 +30,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('panel.users.add', compact(['request']));
     }
 
     /**

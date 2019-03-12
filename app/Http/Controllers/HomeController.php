@@ -40,4 +40,13 @@ class HomeController extends Controller
 
         return view('index', compact(['primaryArticles', 'outstandingArticles', 'businessArticles', 'categories', 'currentCategory']));
     }
+
+    public function showArticle($slug)
+    {   
+        $currentCategory="";
+        $categories = Category::all();
+        return view('article', compact(['slug', 'categories', 'currentCategory']));
+
+        return view('index', compact(['primaryArticles', 'outstandingArticles', 'businessArticles', 'categories', 'currentCategory']));
+    }
 }

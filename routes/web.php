@@ -29,6 +29,6 @@ if ($options['verify'] ?? false) {
 }
 
 Route::get('/{currentCategory}', 'ArticlesCategoryController@index');
-Route::get('/{currentCategory}/{articleSlug}', 'ArticlesController@show');
+Route::get('/{currentCategory}/{articleSlug}', 'HomeController@showArticle');
 
 Route::get('/home', 'HomeController@index')->name('home');
