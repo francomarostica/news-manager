@@ -18,8 +18,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <meta name="google-signin-client_id" content="697446948691-jrgm3ku2q45tkc3afrv77opc8ghvil06.apps.googleusercontent.com">
 </head>
 <body>
+    <!-- Facebook plugin -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2"></script>
+    <!--Google Plugin -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     <div id="app">
         <main class="py-4">
             @yield('content')

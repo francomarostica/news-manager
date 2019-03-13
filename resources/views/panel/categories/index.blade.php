@@ -1,6 +1,7 @@
 @extends('layouts.panel')
 @section('commands-menu')
-    <a class="btn btn-primary" href="/panel/categories/create">
+    <a class="btn btn-dark" href="/panel/categories/create">
+        <span>{{ __('categories.add_title') }}</span>
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="#fff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
         </svg>
@@ -10,12 +11,14 @@
     <h1>{{ __('categories.title') }}</h1>
     <div id="categories-list">
         @foreach ($categories as $category)
-            <div class="category-list-item row" data-id="{{ $category->id }}">
+            <div class="article-list-item row" data-id="{{ $category->id }}">
                 <div class="col-md-3">
                     <img class="image" src="{{ asset('images/categories/'.$category->id.'/'.$category->image.' ') }}" />
                 </div>
-                <div class="col-md-6">
-                    {{ $category->title }}
+                <div class="col-md-9">
+                    <div class="article-list-item-content">
+                        {{ $category->title }}
+                    </div>
                     <div class="text-right">
                         <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                             @method('DELETE')
