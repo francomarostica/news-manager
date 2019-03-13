@@ -29,7 +29,7 @@ Also can access with distinct roles in the pdc
 
 # changelog
 
-## 2019-03-12 00:20
+## 2019-03-13 00:20Hs
 - Separated API from PANEL
 - Added AJAX functions
 - API can be tested used postman or another RESTFul tester
