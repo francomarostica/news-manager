@@ -106,7 +106,7 @@ class ArticlesController extends Controller
         $article->category_id = $request->input('category_id');
         $article->update();
         
-        //return redirect("/panel/articles");
+        return response()->json(['response'=>'El registro se ha guardado correctamente']);
     }
 
     /**

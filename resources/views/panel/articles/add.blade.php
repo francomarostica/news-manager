@@ -34,13 +34,12 @@
     <script>
         $("#btnSave").click(function(e){
             e.preventDefault();
-            var route = "http://127.0.0.1:8000/api/articles/";
             var token = $("#token").val();
 
             var formData = new FormData($('#frmArticle')[0]);
 
             $.ajax({
-                url: route,
+                url: "/api/articles/",
                 headers: {
                     "X-CSRF-TOKEN": token
                 },

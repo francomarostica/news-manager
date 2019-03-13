@@ -27,9 +27,26 @@ Also can access with distinct roles in the pdc
 - Login with social networks
 - Upload changes to demo server
 
+# Requirements
+
+- An operating system that works ie (Linux, MacOS, Windows)
+- PHP > 7.1.3 installed
+- MySQL/MariaDB Server
+- Composer installed
+
+# How to use/install
+
+- Clone the repository using the following command: git clone http://github.com/fmarostica/news-manager
+- Open the project directory and type composer install
+- Change the .env.example file to .env and fill with your DB credentials and DBName
+- Create the DB on mysql
+- You can create DB structure typing php artisan migrate (under the project folder)
+- Optionally you can seed/fill with example data typing php artisan db:seed
+
 # changelog
 
-## 2019-03-13 00:20Hs
+## 2019-03-13
+- Improvements on jQurey AJAX routes
 - Separated API from PANEL
 - Added AJAX functions
 - API can be tested used postman or another RESTFul tester

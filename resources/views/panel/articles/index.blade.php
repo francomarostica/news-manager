@@ -57,7 +57,7 @@
             e.preventDefault();
             var item = $(this).closest(".article-list-item");
             var article_id = $("#article-id").val();
-            var route = "http://127.0.0.1:8000/api/articles/"+article_id;
+            var route = "/api/articles/"+article_id;
             var token = $("#token").val();
 
             $.ajax({
