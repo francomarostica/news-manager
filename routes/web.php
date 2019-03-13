@@ -12,6 +12,7 @@ Route::resource('/panel/users', 'Panel\UsersController');
 // API Routes... //
 Route::put('/api/profile', 'Api\ProfileController@update');
 Route::apiResource('/api/articles', 'Api\ArticlesController')->middleware('api');
+Route::apiResource('/api/categories', 'Api\CategoriesController')->middleware('api');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

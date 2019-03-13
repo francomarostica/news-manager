@@ -30,7 +30,7 @@
 
             var formData = new FormData($('#frmProfile')[0]);
             $.ajax({
-                url: "/api/profile/",
+                url: "/api/profile",
                 headers: {
                     "X-CSRF-TOKEN": token
                 },

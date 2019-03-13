@@ -13,7 +13,7 @@ class MainController extends Controller
             return redirect("/login");
         } else {
             $request->user()->authorizeRoles(['admin', 'editor', 'user']);
-            return redirect("/panel/profile");
+            return view('panel.index', compact('request'));
         }
     }
 }
