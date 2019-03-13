@@ -21,4 +21,48 @@
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
     </form>
+    <script>
+        $("#btnSave").click(function(e){
+            e.preventDefault();
+            var token = $("#token").val();
+
+            var formData = new FormData($('#frmArticle')[0]);
+
+            $.ajax({
+                url: "/api/profile/",
+                headers: {
+                    "X-CSRF-TOKEN": token
+                },
+                type: "post",
+                dataType: "json",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                xhr: function() 
+                {
+                    var myXhr = $.ajaxSettings.xhr();
+                    if(myXhr.upload) myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
+                    return myXhr;
+                },
+                beforeSend: function() 
+                {
+                    $("#status").empty();
+                    var percentVal = '0%';
+                    $('.progress-bar-wait').width(percentVal);
+                    $('.percent').html(percentVal);
+                },
+                success: function(data){
+                    var error = data.errors;
+                    var respones = data.response;
+                    
+                    if(error!=undefined){
+                        swal("Error!", error, "error");
+                    } else {
+                        swal("Operación realizada!", response, "success");
+                    }
+                }
+            });
+        });
+        </script>
 @endsection

@@ -12,9 +12,8 @@ class MainController extends Controller
         if(!Auth::check()){
             return redirect("/login");
         } else {
-            //var_dump($request->user()->hasRole('user'));
             $request->user()->authorizeRoles(['admin', 'editor', 'user']);
-            return view('panel.index', compact("request"));
+            return view('panel.profile', compact("request"));
         }
     }
 }

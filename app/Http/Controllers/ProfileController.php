@@ -16,9 +16,4 @@ class ProfileController extends Controller
             return view('panel.profile', compact('request'));
         }
     }
-
-    public function store(Request $request)
-    {
-        return view('panel.profile', compact('request'));
-    }
 }

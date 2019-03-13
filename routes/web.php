@@ -3,7 +3,7 @@
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/panel', 'Panel\MainController@index')->name('panel');
 Route::resource('/panel/articles', 'Panel\ArticlesController');
-Route::resource('/panel/profile', 'Panel\ProfileController');
+Route::get('/panel/profile', 'Panel\ProfileController@index');
 Route::resource('/panel/categories', 'Panel\CategoriesController');
 Route::resource('/panel/users', 'Panel\UsersController');
 
