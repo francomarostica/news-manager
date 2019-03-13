@@ -1,12 +1,16 @@
 <?php
 
 Route::get('/', 'HomeController@index')->name('index');
+
+// PDC Routes //
 Route::get('/panel', 'Panel\MainController@index')->name('panel');
 Route::resource('/panel/articles', 'Panel\ArticlesController');
 Route::get('/panel/profile', 'Panel\ProfileController@index');
 Route::resource('/panel/categories', 'Panel\CategoriesController');
 Route::resource('/panel/users', 'Panel\UsersController');
 
+// API Routes... //
+Route::put('/api/profile', 'Api\ProfileController@update');
 Route::apiResource('/api/articles', 'Api\ArticlesController')->middleware('api');
 
 // Authentication Routes...
