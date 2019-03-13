@@ -30,8 +30,9 @@ Also can access with distinct roles in the pdc
 # changelog
 
 ## 2019-03-12 00:20
-- Created CRUD modules for the control panel
-- Deployed in a production server at http://newsmanager.cloure.com
+- Separated API from PANEL
+- Added AJAX functions
+- API can be tested used postman or another RESTFul tester
 
 ## 2019-03-12
 - Created CRUD modules for the control panel
