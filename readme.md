@@ -18,18 +18,24 @@ Also can access with distinct roles in the pdc
 # Features
 
 - Listing articles with categories
-- User autentication (in development)
+- Add, delete, edit articles and categories (based in roles)
+
+# Task to do
+
+- Finalize AJAX, RESTFul operations
+- Add module to manage ads
+- Login with social networks
+- Upload changes to demo server
 
 # changelog
 
-## 2019-03-11
-- Added role based functions
+## 2019-03-12 00:20
+- Created CRUD modules for the control panel
+- Deployed in a production server at http://newsmanager.cloure.com
 
 ## 2019-03-12
 - Created CRUD modules for the control panel
 - Deployed in a production server at http://newsmanager.cloure.com
 
-# Task to do
-
-- Create an RESTFul API separated from pdc
-- Login with social networks
+## 2019-03-11
+- Added role based functions

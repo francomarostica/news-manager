@@ -7,7 +7,10 @@
         <title>Panel de control | NewsManager</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/pdc-styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/sweetalert.min.js') }}" defer></script>
     </head>
     <body>
         <header>
@@ -84,5 +87,6 @@
         <div class="container py-4">
             @yield('content')
         </div>
+
     </body>
 </html>

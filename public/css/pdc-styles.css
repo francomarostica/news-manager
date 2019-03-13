@@ -1,6 +1,6 @@
-.article-list {
+.article-list-item {
     margin-bottom: 10px;
 }
-.article-list .image{
+.article-list-item .image{
     width: 100%;
 }

@@ -1,16 +1,20 @@
 <?php
 
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('/panel', 'PanelController@index')->name('panel');
-Route::resource('/panel/articles', 'ArticlesController');
-Route::resource('/panel/profile', 'ProfileController');
-Route::resource('/panel/categories', 'CategoriesController');
-Route::resource('/panel/users', 'UserController');
+Route::get('/panel', 'Panel\MainController@index')->name('panel');
+Route::resource('/panel/articles', 'Panel\ArticlesController');
+Route::resource('/panel/profile', 'Panel\ProfileController');
+Route::resource('/panel/categories', 'Panel\CategoriesController');
+Route::resource('/panel/users', 'Panel\UsersController');
+
+Route::apiResource('/api/articles', 'Api\ArticlesController')->middleware('api');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/api/login', 'Auth\LoginController@login');
+Route::post('/api/logout', 'Auth\LoginController@logout')->name('api-logout');
 
 // Registration Routes...
 if ($options['register'] ?? true) {
@@ -28,7 +32,7 @@ if ($options['verify'] ?? false) {
     Route::emailVerification();
 }
 
-Route::get('/{currentCategory}', 'ArticlesCategoryController@index');
+Route::get('/{currentCategory}', 'HomeController@index');
 Route::get('/{currentCategory}/{articleSlug}', 'HomeController@showArticle');
 
 Route::get('/home', 'HomeController@index')->name('home');
