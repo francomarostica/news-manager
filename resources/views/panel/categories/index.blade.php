@@ -12,10 +12,7 @@
     <div id="categories-list">
         @foreach ($categories as $category)
             <div class="article-list-item row" data-id="{{ $category->id }}">
-                <div class="col-md-3">
-                    <img class="image" src="{{ asset('images/categories/'.$category->id.'/'.$category->image.' ') }}" />
-                </div>
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="article-list-item-content">
                         {{ $category->title }}
                     </div>

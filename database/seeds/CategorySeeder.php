@@ -15,39 +15,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
-            'id' => 1,
-            'title' => 'Politica',
-            'image' => '',
-            'url' => 'politica'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => 2,
-            'title' => 'Negocios',
-            'image' => '',
-            'url' => 'negocios'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => 3,
-            'title' => 'Sucesos',
-            'image' => '',
-            'url' => 'sucesos'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => 4,
-            'title' => 'Internacionales',
-            'image' => '',
-            'url' => 'internacionales'
-        ]);
-
-        DB::table('categories')->insert([
-            'id' => 5,
-            'title' => 'Tecnología',
-            'image' => '',
-            'url' => 'tecnologia'
-        ]);
+        factory(App\Category::class, 8)->create();
     }
 }

@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <a href="/panel/articles/{{ $article->id }}/edit">
-                            <img class="image" src="{{ asset('images/articles/'.$article->id.'/'.$article->image.' ') }}" />
+                            <img class="image" src="{{ asset( $article->image ) }}" />
                         </a>
                     </div>
                     <div class="col-md-9">

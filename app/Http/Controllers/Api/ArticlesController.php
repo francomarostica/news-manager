@@ -19,7 +19,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy('publish_date', 'desc')->get();
+        $articles = Article::orderBy('id', 'desc')->get();
         return $articles;
     }
 
@@ -53,9 +53,6 @@ class ArticlesController extends Controller
         }
 
         $article = new Article();
-
-        //defines article publish date to current date and time
-        $article->publish_date = date("Y-m-d H:i:s");
 
         //check if request has image
         if(request()->hasFile('image')){

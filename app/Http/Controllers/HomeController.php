@@ -17,28 +17,37 @@ class HomeController extends Controller
     {   
         $categories = Category::all();
 
-        $primaryArticles = Article::where([
-            ['published','=', 1], 
+        $primaryArticle = Article::where([
+            ['state','=', "PUBLISHED"], 
             ['category_id', '<>', 'negocios'], 
             ['outstanding_weight', '=', 1]
         ])
-        ->orderBy('publish_date', 'desc')
-        ->take(3)
-        ->get();
+        ->orderBy('id', 'desc')
+        ->first();
 
-        $outstandingArticles = Article::where([
-            ['published','=',1],
-            ['outstanding_weight','>',1],
+        $secondaryArticles = Article::where([
+            ['state','=', "PUBLISHED"], 
+            ['outstanding_weight','=',2],
             ['category_id', '<>', 'negocios']
         ])
         ->take(4)
         ->get();
 
-        $businessArticles = Article::where(['published'=>1, 'category_id'=>'negocios'])
-        ->take(3)
+        $businessArticles = Article::where([
+            ['state','=', "PUBLISHED"], 
+            ['outstanding_weight','=',3],
+            ['category_id', '<>', 'negocios']
+        ])
+        ->take(4)
         ->get();
 
-        return view('index', compact(['primaryArticles', 'outstandingArticles', 'businessArticles', 'categories', 'currentCategory']));
+        return view('index', compact([
+            'primaryArticle', 
+            'secondaryArticles', 
+            'businessArticles', 
+            'categories', 
+            'currentCategory'])
+        );
     }
 
     public function showArticle($slug)

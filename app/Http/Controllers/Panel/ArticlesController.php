@@ -12,7 +12,7 @@ class ArticlesController extends Controller
 {
     public function index(Request $request)
     {
-        $articles = Article::orderBy('publish_date', 'desc')->get();
+        $articles = Article::orderBy('id', 'desc')->get();
 
         if(!Auth::check()){
             return redirect("/login");
