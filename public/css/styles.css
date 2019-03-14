@@ -115,6 +115,18 @@ body{
     padding: 10px 0px;
 }
 
+footer{
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    margin-bottom: 45px;
+}
+
+footer a, footer a:hover{
+    color: white;
+    text-decoration: none;
+}
+
 header{
     border-bottom: 1px solid #ccc;
     margin-bottom: 20px;
@@ -139,4 +151,9 @@ header{
 
 section{
     padding: 20px 0px;
+}
+
+.secondary-nav {
+    background-color: #fff;
+    padding: 10px 0px;
 }

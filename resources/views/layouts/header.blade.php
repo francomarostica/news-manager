@@ -49,9 +49,11 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        @foreach ($categories as $category)
-            <a href="/{{ $category->url }}" class="category-mnu-item {{ ($currentCategory == $category->url) ? 'active' : '' }}">{{ $category->title }}</a>
-        @endforeach
+    <div class="secondary-nav">
+        <div class="container">
+            @foreach ($categories as $category)
+                <a href="/{{ $category->url }}" class="category-mnu-item {{ ($currentCategory == $category->url) ? 'active' : '' }}">{{ $category->title }}</a>
+            @endforeach
+        </div>
     </div>
 </header>
