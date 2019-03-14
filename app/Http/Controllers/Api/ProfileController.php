@@ -19,8 +19,9 @@ class ProfileController extends Controller
         
         $user = request()->user();
         $user->name = request()->input('name');
-        //$user->last_name = request()->input('last_name');
+        $user->last_name = request()->input('last_name');
         $user->email = request()->input('email');
+        $user->image = "";
         $user->update();
 
         //return the request

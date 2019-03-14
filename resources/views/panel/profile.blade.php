@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-3">
                 <label for="txtLastName">Apellido</label>
-                <input id="txtLastName" name="last_name" type="text" class="form-control" />
+                <input id="txtLastName" name="last_name" type="text" class="form-control" value="{{ Auth::user()->last_name }}" />
             </div>
             <div class="col-md-6">
                 <label for="txtEmail">Dirección de correo</label>
