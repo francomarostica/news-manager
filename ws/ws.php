@@ -1,12 +1,19 @@
 <?php
+    /**
+     * @author Franco Marostica <fdmarostica84@gmail.com>
+     */
+
     ob_implicit_flush();
 
-    $host = 'localhost'; //host
-    $port = '2083'; //port
-    $null = NULL; //null var
+    define("DEBUG_MODE", TRUE);
+
+    $host       = 'localhost';  //host
+    $port       = '2083';       //port
+    $null       = NULL;         //null var used by socket select
 
     //Create TCP/IP sream socket
     $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+
     //reuseable port
     socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);
 
@@ -23,6 +30,7 @@
     while (true) {
         //manage multipal connections
         $changed = $clients;
+
         //returns the socket resources in $changed array
         socket_select($changed, $null, $null, 0, 10);
         
@@ -30,6 +38,7 @@
         if (in_array($socket, $changed)) {
             $socket_new = socket_accept($socket); //accpet new socket
             $clients[] = $socket_new; //add socket to client array
+            inputlog("Client connected!");
             
             $header = socket_read($socket_new, 1024); //read data sent by the socket
             perform_handshaking($header, $socket_new, $host, $port); //perform websocket handshake
@@ -49,21 +58,38 @@
             //check for any incomming data
             while(socket_recv($changed_socket, $buf, 1024, 0) >= 1)
             {
-                $user_message = "";
+                $user_name = "";
+                $message = "";
+                $message_type = "";
+
                 $received_text = unmask($buf); //unmask data
                 $tst_msg = json_decode($received_text, true); //json decode 
-                $user_name = $tst_msg['name']; //sender name
-                //$user_message = $tst_msg['message']; //message text
-                //$user_color = $tst_msg['color']; //color
+
+                if($tst_msg!=null){
+                    if(array_key_exists("name", $tst_msg)){
+                        $user_name = $tst_msg['name']; 
+                    }
+                    if(array_key_exists("type", $tst_msg)){
+                        $message_type = $tst_msg['type']; 
+                    }
+                    if(array_key_exists("message", $tst_msg)){
+                        $message = $tst_msg['message']; 
+                    }
+                }
                 
                 //prepare data to be sent to client
-                $response_text = mask(json_encode(array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message)));
+                $response_text = mask(json_encode(array(
+                    'type'=>$message_type, 
+                    'name'=>$user_name, 
+                    'message'=>$message))
+                );
                 send_message($response_text); //send data
                 break 2; //exist this loop
             }
             
             $buf = @socket_read($changed_socket, 1024, PHP_NORMAL_READ);
-            if ($buf === false) { // check disconnected client
+            if ($buf === false) { 
+                // check disconnected client
                 // remove client for $clients array
                 $found_socket = array_search($changed_socket, $clients);
                 socket_getpeername($changed_socket, $ip);
@@ -147,9 +173,12 @@
         "Upgrade: websocket\r\n" .
         "Connection: Upgrade\r\n" .
         "WebSocket-Origin: $host\r\n" .
-        "WebSocket-Location: ws://$host:$port/demo/shout.php\r\n".
+        "WebSocket-Location: ws://$host:$port/ws.php\r\n".
         "Sec-WebSocket-Accept:$secAccept\r\n\r\n";
         socket_write($client_conn,$upgrade,strlen($upgrade));
     }
 
+    function inputlog($message, $type="I"){
+        if(DEBUG_MODE) echo $message."\n";
+    }
 ?>

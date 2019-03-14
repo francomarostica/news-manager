@@ -81,6 +81,19 @@ header{
     background-color: #000;
 }
 
+.testing-dialog{
+    border: 1px solid #ccc;
+}
+
+.testing-dialog .title{
+    padding: 10px;
+    background-color: #ddd;
+}
+
+.testing-dialog .content{
+    padding: 10px;
+}
+
 @media only screen and (max-width: 768px) {
     .article-list-item{
         border: 1px solid #ccc;

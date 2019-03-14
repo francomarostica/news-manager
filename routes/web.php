@@ -8,6 +8,7 @@ Route::resource('/panel/articles', 'Panel\ArticlesController');
 Route::get('/panel/profile', 'Panel\ProfileController@index');
 Route::resource('/panel/categories', 'Panel\CategoriesController');
 Route::resource('/panel/users', 'Panel\UsersController');
+Route::get('/panel/testing', 'Panel\TestingController@index');
 
 // API Routes... //
 Route::put('/api/profile', 'Api\ProfileController@update');

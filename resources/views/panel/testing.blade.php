@@ -1,0 +1,32 @@
+@extends('layouts.panel')
+@section('content')
+    <h1>{{ __('testing.title') }}</h1>
+    <form id="frmProfile" action="/panel/profile" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <input type="hidden" value="{{ csrf_token() }}" id="token">
+
+        <div class="testing-dialog">
+            <div class="title">Enviar notificación de prueba</div>
+            <div class="content">
+                <div class="form-group">
+                    <input id="txtMessage" name="name" type="text" class="form-control" value="" required/>
+                </div>
+                <div class="form-group py-4 text-center">
+                    <button id="btnSendNotification" type="button" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        $("#btnSendNotification").click(function(){
+            var msg = {
+                name : "guest",
+                type : "notification",
+                message: $("#txtMessage").val()
+            };
+            ws.send(JSON.stringify(msg));
+        });
+    </script>
+@endsection

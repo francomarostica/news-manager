@@ -11,7 +11,7 @@
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/sweetalert.min.js') }}" defer></script>
-        <script src="{{ asset('js/ws.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </head>
     <body>
         <header>
@@ -43,6 +43,11 @@
                             @if($request->user()->hasRole('admin'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="/panel/users">{{ __('users.title') }}</a>
+                                </li>
+                            @endif
+                            @if($request->user()->hasRole('admin'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/panel/testing">{{ __('testing.title') }}</a>
                                 </li>
                             @endif
                         </ul>
