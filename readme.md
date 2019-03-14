@@ -23,9 +23,11 @@ Any question, suggest, job, etc feel free to contact me at fdmarostica84@gmail.c
 - Listing articles with categories (Front end)
 - Show articles (Front end)
 - Add, List, delete, edit articles and categories (based in roles)
+- Real Time messages
 
 # Task to do
 
+- Secure WS Services
 - Add module to manage ads
 - Login with social networks
 
@@ -44,8 +46,13 @@ Any question, suggest, job, etc feel free to contact me at fdmarostica84@gmail.c
 - Create the DB on mysql
 - You can create DB structure typing php artisan migrate (under the project folder)
 - Optionally you can seed/fill with example data typing php artisan db:seed
+- Aditionally you need to start the WS Server typing php ws/ws.php in your news-manager project folder
 
 # changelog
+
+## 2019-03-14
+- Added WS Services
+- Added testing module
 
 ## 2019-03-13
 - Improvements on jQurey AJAX routes
