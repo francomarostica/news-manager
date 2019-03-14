@@ -8,7 +8,7 @@
     define("DEBUG_MODE", TRUE);
 
     $host       = 'localhost';  //host
-    $port       = '2083';       //port
+    $port       = '2082';       //port
     $null       = NULL;         //null var used by socket select
 
     //Create TCP/IP sream socket
