@@ -25,13 +25,17 @@
                             <div class="badge badge-primary">
                                 {{ $article->category_id }}
                             </div>
-                            @if($article->published)
+                            @if($article->state=="PUBLISHED")
                                 <div class="badge badge-success">
-                                    Publicado
+                                    {{ __("articles.published") }}
                                 </div>
-                            @else
-                                <div class="badge badge-danger">
-                                    No Publicado
+                            @elseif($article->state=="PENDING")
+                                <div class="badge badge-warning">
+                                    {{ __("articles.pending") }}
+                                </div>
+                            @elseif($article->state=="DRAFT")
+                                <div class="badge badge-primary">
+                                    {{ __("articles.draft") }}
                                 </div>
                             @endif
                         </div>

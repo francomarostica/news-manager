@@ -7,7 +7,7 @@ $factory->define(App\Category::class, function (Faker $faker) {
 
     return [
         "title" => $title,
-        "url" => str_slug($title),
+        "slug" => str_slug($title),
         "image" => $faker->imageUrl($width=90, $height=90)
     ];
 });

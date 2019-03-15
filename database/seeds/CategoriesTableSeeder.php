@@ -1,15 +1,11 @@
 <?php
 
-/**
- * @author Franco Marostica <fdmarostica84@gmail.com>
- */
-
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds with categories for articles.
+     * Run the database seeds.
      *
      * @return void
      */
