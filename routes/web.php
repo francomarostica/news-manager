@@ -38,7 +38,6 @@ if ($options['verify'] ?? false) {
     Route::emailVerification();
 }
 
-Route::get('/{currentCategory}', 'HomeController@index');
+Route::get('/{currentCategory}', 'HomeController@secondaryPage');
 Route::get('/{currentCategory}/{articleSlug}', 'HomeController@showArticle');
 
-Route::get('/home', 'HomeController@index')->name('home');

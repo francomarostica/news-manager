@@ -10,7 +10,7 @@
                             <img class="image" src="{{ $primaryArticle->image }}" />
                         </a>
                         <div class="titlebox">
-                            <div class="category">{{ $primaryArticle->category_id }}</a></div>
+                            <div class="category"><a href="{{ $primaryArticle->category->slug }}">{{ $primaryArticle->category->title }}</a></div>
                             <h1 class="title">{{ $primaryArticle->title }}</h1>
                         </div>
                     </article>
@@ -24,7 +24,7 @@
                                         <img class="image" src="{{ $article->image }}" />
                                     </a>
                                     <div class="titlebox">
-                                        <div class="category">{{ $article->category_id }}</a></div>
+                                        <div class="category"><a href="{{ $article->category->slug }}">{{ $article->category->title }}</a></div>
                                         <h1 class="title">{{ $article->title }}</h1>
                                     </div>
                                 </article>
@@ -44,7 +44,7 @@
                                     <img class="image" src="{{ $article->image }}" />
                                 </a>
                                 <div class="titlebox">
-                                    <div class="category">{{ $article->category_id }}</a></div>
+                                    <div class="category"><a href="{{ $article->category->slug }}">{{ $article->category->title }}</a></div>
                                     <h1 class="title">{{ $article->title }}</h1>
                                 </div>
                             </article>

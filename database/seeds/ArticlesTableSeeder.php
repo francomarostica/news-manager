@@ -11,8 +11,12 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
         factory(App\Article::class, 200)->create()->each(function(App\Article $article){
-            $article->category_id()->attach($article->category_id);
+            $article->tags()->attach($article->category_id);
         });
+        */
+
+        factory(App\Article::class, 200)->create();
     }
 }

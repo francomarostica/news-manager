@@ -50,6 +50,20 @@ class HomeController extends Controller
         );
     }
 
+    public function secondaryPage($currentCategory)
+    {   
+        $categories = Category::all();
+        $currentCategoryId = Category::where("slug", $currentCategory)->pluck('id')->first();
+
+        $articles = Article::where([
+            ['state','=', "PUBLISHED"], 
+            ['category_id', '=', $currentCategoryId]
+        ])
+        ->take(4)
+        ->get();
+        return view('articles-by-category', compact('categories', 'currentCategory', 'articles'));
+    }
+
     public function showArticle($slug)
     {   
         $currentCategory="";
