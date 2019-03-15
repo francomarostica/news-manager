@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 class CategoriesTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seeds categories table
      *
      * @return void
      */
