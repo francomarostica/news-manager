@@ -1,34 +1,16 @@
 if ("Notification" in window) {
+    console.log("Browser accepts notifications!");
     Notification.requestPermission();
 }
 
-var wsuri = "ws://newsmanager.test.com:2083";
-
-console.log("WS Initialized");
-
-var ws = new WebSocket(wsuri);
-ws.onopen = function(e){
-    console.log("Connected");
-    var msg = {
-        name : "guest"
-    };
-    ws.send(JSON.stringify(msg));
-}
-
-ws.onerror = function(e){
-    console.log(e);
-}
-
-ws.onmessage = function(e){
-    //console.log(e.data);
-    var data = JSON.parse(e.data);
+window.Echo.channel('public_notifications').listen('.NotificationSent', (data) => {
+    console.log(data);
     var msg = data.message;
-    var msgType = data.type;
 
-    if (Notification.permission === "granted") {
-        if(msgType=="notification"){
+    if(data.type=="info"){
+        if (Notification.permission === "granted") {
             var notification = new Notification(msg);
             setTimeout(notification.close.bind(notification), 4000);
         }
     }
-}
+});

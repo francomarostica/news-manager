@@ -31,3 +31,48 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app'
 });
+
+Echo.join('public_notifications')
+.here(users => {
+    this.users = users;
+})
+.joining(user => {
+    this.users.push(user);
+})
+.leaving(user => {
+    this.users = this.users.filter(u => u.id !== user.id);
+})
+.listenForWhisper('typing', ({id, name}) => {
+    this.users.forEach((user, index) => {
+        if (user.id === id) {
+            user.typing = true;
+            this.$set(this.users, index, user);
+        }
+    });
+})
+.listen('NotificationSent', (event) => {
+    console.log("New Message!");
+    this.messages.push({
+        message: event.message.message,
+        user: event.user
+    });
+
+    this.users.forEach((user, index) => {
+        if (user.id === event.user.id) {
+            user.typing = false;
+            this.$set(this.users, index, user);
+        }
+    });
+});
+
+
+
+/*
+Echo.join('notifications').listen('NotificationSent', (event) => {
+    console.log("New message!")
+    this.messages.push({
+        message: event.message.message,
+        user: event.user
+    });
+});
+*/

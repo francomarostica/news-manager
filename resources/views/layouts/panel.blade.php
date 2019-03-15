@@ -4,14 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>Panel de control | NewsManager</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/pdc-styles.css') }}">
         <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/sweetalert.min.js') }}" defer></script>
-        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     </head>
     <body>
         <header>

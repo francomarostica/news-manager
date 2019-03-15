@@ -2,6 +2,9 @@
 
 Route::get('/', 'HomeController@index')->name('index');
 
+Route::get('public_notifications', 'NotificationsController@getNotifications');
+Route::post('public_notifications', 'NotificationsController@sendNotification');
+
 // PDC Routes //
 Route::get('/panel', 'Panel\MainController@index')->name('panel');
 Route::resource('/panel/articles', 'Panel\ArticlesController');

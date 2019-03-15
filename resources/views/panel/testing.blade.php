@@ -3,14 +3,13 @@
     <h1>{{ __('testing.title') }}</h1>
     <form id="frmProfile" action="/panel/profile" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
         <input type="hidden" value="{{ csrf_token() }}" id="token">
 
         <div class="testing-dialog">
             <div class="title">Enviar notificación de prueba</div>
             <div class="content">
                 <div class="form-group">
-                    <input id="txtMessage" name="name" type="text" class="form-control" value="" required/>
+                    <input id="txtMessage" name="message" type="text" class="form-control" value="" required/>
                 </div>
                 <div class="form-group py-4 text-center">
                     <button id="btnSendNotification" type="button" class="btn btn-primary">Enviar</button>
@@ -21,12 +20,13 @@
 
     <script>
         $("#btnSendNotification").click(function(){
-            var msg = {
-                name : "guest",
-                type : "notification",
+            var message = {
+                user: "fran",
                 message: $("#txtMessage").val()
             };
-            ws.send(JSON.stringify(msg));
+            axios.post('/public_notifications', message).then(response => {
+                console.log(response.data);
+            });
         });
     </script>
 @endsection
