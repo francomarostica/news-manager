@@ -23,7 +23,7 @@ Any question, suggest, job, etc feel free to contact me at fdmarostica84@gmail.c
 - Listing articles with categories (Front end)
 - Show articles (Front end)
 - Add, List, delete, edit articles and categories (based in roles)
-- Real Time messages
+- Real Time messages using laravel websockets as pusher service
 
 # Task to do
 
@@ -34,7 +34,8 @@ Any question, suggest, job, etc feel free to contact me at fdmarostica84@gmail.c
 # Requirements
 
 - An operating system that works ie (Linux, MacOS, Windows)
-- PHP > 7.1.3 installed
+- PHP >= 7.1.3 installed
+- npm >= 6 installed
 - MySQL/MariaDB Server
 - Composer installed
 
@@ -42,6 +43,8 @@ Any question, suggest, job, etc feel free to contact me at fdmarostica84@gmail.c
 
 - Clone the repository using the following command: git clone http://github.com/fmarostica/news-manager
 - Open the project directory and type composer install
+- type npm install
+- type artisan key:generate
 - Change the .env.example file to .env and fill with your DB credentials and DBName
 - Create the DB on mysql
 - You can create DB structure typing php artisan migrate (under the project folder)
@@ -49,6 +52,9 @@ Any question, suggest, job, etc feel free to contact me at fdmarostica84@gmail.c
 - Aditionally you need to start the WS Server typing php ws/ws.php in your news-manager project folder
 
 # changelog
+
+## 2019-03-14
+- Improvements on websockets using laravel websockets as a pusher service
 
 ## 2019-03-14
 - Added WS Services
