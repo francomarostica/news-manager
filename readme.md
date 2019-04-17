@@ -1,3 +1,5 @@
+https://mega.nz/#!JpgihAjY!blNTb4PKHtVr4_PYx_vYpnfiX2YR8dL2ZW8_z7XqKWY
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 ## About NewsManager
